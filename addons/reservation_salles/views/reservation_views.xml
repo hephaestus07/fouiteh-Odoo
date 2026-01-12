@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Vue LISTE -->
+    <record id="view_reservation_salle_tree" model="ir.ui.view">
+        <field name="name">reservation.salle.tree</field>
+        <field name="model">reservation.salle</field>
+        <field name="arch" type="xml">
+            <tree string="Réservations de salles">
+                <field name="name"/>
+                <field name="date_reservation"/>
+                <field name="heure_debut"/>
+                <field name="heure_fin"/>
+                <field name="state"/>
+                <field name="responsable_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vue FORMULAIRE -->
+    <record id="view_reservation_salle_form" model="ir.ui.view">
+        <field name="name">reservation.salle.form</field>
+        <field name="model">reservation.salle</field>
+        <field name="arch" type="xml">
+            <form string="Réservation de salle">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="date_reservation"/>
+                    </group>
+                    <group>
+                        <field name="heure_debut"/>
+                        <field name="heure_fin"/>
+                    </group>
+                    <group>
+                        <field name="responsable_id"/>
+                        <field name="state"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+        <!-- ACTION -->
+    <record id="action_reservation_salle" model="ir.actions.act_window">
+        <field name="name">Réservations de salles</field>
+        <field name="res_model">reservation.salle</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- MENU PRINCIPAL -->
+    <menuitem id="menu_reservation_root"
+              name="Réservation de salles"
+              sequence="10"/>
+
+    <!-- SOUS-MENU -->
+    <menuitem id="menu_reservation_salle"
+              name="Réserver une salle"
+              parent="menu_reservation_root"
+              action="action_reservation_salle"
+              sequence="10"/>
+
+</odoo>
